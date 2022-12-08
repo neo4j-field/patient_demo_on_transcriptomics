@@ -1,0 +1,69 @@
+{
+  "title": "",
+  "version": "2.1",
+  "settings": {
+    "pagenumber": 0,
+    "editable": true,
+    "fullscreenEnabled": false,
+    "parameters": {}
+  },
+  "pages": [
+    {
+      "title": "Main Page",
+      "reports": [
+        {
+          "title": "",
+          "query": "MATCH (n)-[e]->(m) RETURN n,e,m LIMIT 20\n\n\n",
+          "width": 3,
+          "height": 2,
+          "x": 3,
+          "y": 0,
+          "type": "graph",
+          "selection": {
+            "Patient": "(label)",
+            "T2D": "(label)",
+            "NoHbA1c": "(label)",
+            "NoT2D": "(label)",
+            "lowHbA1c": "(label)",
+            "highHbA1c": "(label)",
+            "Community": "id"
+          },
+          "settings": {
+            "nodePositions": {}
+          }
+        },
+        {
+          "title": "",
+          "query": "MATCH(p:Patient:X)\nreturn p.race, count(p)\n\n",
+          "width": 3,
+          "height": 2,
+          "x": 6,
+          "y": 0,
+          "type": "pie",
+          "selection": {
+            "index": "p.race",
+            "value": "count(p)",
+            "key": "(none)"
+          },
+          "settings": {}
+        },
+        {
+          "title": "",
+          "query": "\nMATCH(p:Patient:X)\nreturn [p.gender, p.race], count(p)\n\n",
+          "width": 3,
+          "height": 2,
+          "x": 9,
+          "y": 0,
+          "type": "sunburst",
+          "selection": {
+            "index": "[p.gender, p.race]",
+            "value": "count(p)",
+            "key": "(none)"
+          },
+          "settings": {}
+        }
+      ]
+    }
+  ],
+  "parameters": {}
+}
